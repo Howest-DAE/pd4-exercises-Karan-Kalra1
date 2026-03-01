@@ -41,6 +41,11 @@ public class SpawnSystem : NetworkBehaviour
         ulong clientId = NetworkManager.LocalClientId;
 
         SpawnPlayerAvatarRpc(spawnIndex, clientId);
+
+        foreach (var spawn in _spawnPositions)
+        {
+            spawn.gameObject.SetActive(false);
+        }
     }
 
     [Rpc(SendTo.Server)]
